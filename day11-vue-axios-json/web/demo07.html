@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo07：侦听属性</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                "el":"#app",
+                data:{
+                    firstName:"xu",
+                    lastName:"ll",
+                    fullName:"xu ll",
+                },
+                watch:{
+                    "firstName":function(inputValue){
+                        this.fullName = inputValue + " " + this.lastName;
+                    },
+                    "lastName":function (inputValue) {
+                        this.fullName = this.firstName + " " + inputValue;
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!--firstName或lastName属性发生变化时，修改fullName属性。
+            此时需要对firstName或lastName属性进行『侦听』-->
+        <p>尊姓：{{firstName}}</p>
+        <p>大名：{{lastName}}</p>
+        尊姓：<input type="text" v-model="firstName" /><br/>
+        大名：<input type="text" v-model="lastName" /><br/>
+        <p>全名：{{fullName}}</p>
+    </div>
+</body>
+</html>

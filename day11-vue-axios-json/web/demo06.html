@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo06：事件驱动</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                // "el":"#div0",  //el用于指定Vue对象要关联的HTML元素。el就是element的缩写
+                "el":"#app",
+                data:{          // data属性设置了Vue对象中保存的数据
+                    // message:"123456789",
+                    position:"暂时没有获取到鼠标的位置信息"
+                },
+                methods:{
+                    // reverseMy:function () {
+                    //     this.message=this.message.split("").reverse().join("");
+                    //
+                    // }
+                    "recordPosition":function(event){
+                        this.position = event.clientX + " " + event.clientY;
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <!--<div id="div0">-->
+        <!--&lt;!&ndash;实现对一个span内的字符串进行翻转&ndash;&gt;-->
+        <!--<span>{{message}}}</span>-->
+        <!--&lt;!&ndash;<input type="button" value="反转span字符串" v-on:click="reverseMy" />&ndash;&gt;-->
+        <!--<input type="button" value="反转span字符串" @click="reverseMy" />-->
+    <!--</div>-->
+
+    <div id="app">
+        <div id="area" style="height: 100px;width: 100px" @mousemove="recordPosition"></div>
+        <p id="showPosition">{{position}}</p>
+    </div>
+</body>
+</html>

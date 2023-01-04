@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo08：Vue对象生命周期</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                "el":"#div0",
+
+                data:{
+                    "msg":1,
+                },
+
+                //注意：methods不是methods
+                methods: {
+                    changeMsg: function () {
+                        this.msg = this.msg + 1;
+                    },
+                },
+
+                /*vue对象创建之前*/
+                beforeCreate:function () {
+                    console.log("beforeCreate:vue对象创建之前---------------");
+                    console.log("msg:"+this.msg); //msg:undefined
+                },
+                /*vue对象创建之后*/
+                created:function () {
+                    console.log("created:vue对象创建之后---------------");
+                    console.log("msg:"+this.msg); //msg:1
+                },
+                /*数据装载之前*/
+                beforeMount:function () {
+                    console.log("beforeMount:数据装载之前---------------");
+                    console.log("span:"+document.getElementById("span").innerText); //span:{{msg}}
+                },
+                /*数据装载之后*/
+                mounted:function () {
+                    console.log("mounted:数据装载之后---------------");
+                    console.log("span:"+document.getElementById("span").innerText); //span:1
+                },
+
+                beforeUpdate:function(){
+                    console.log("beforeUpdate:数据更新之前---------------");
+                    console.log("msg:"+this.msg);   //msg:2
+                    console.log("span:"+document.getElementById("span").innerText);//span:1
+                },
+                updated:function(){
+                    console.log("Updated:数据更新之后---------------");
+                    console.log("msg:"+this.msg);  //msg:2
+                    console.log("span:"+document.getElementById("span").innerText);//span:2
+                }
+
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <span id="span">{{msg}}</span><br/>
+        <input type="button" value="改变msg的值" @click="changeMsg" />
+    </div>
+</body>
+</html>

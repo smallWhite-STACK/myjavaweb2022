@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo02：v-model</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                "el":"#div0",  //el用于指定Vue对象要关联的HTML元素。el就是element的缩写
+                data:{          // data属性设置了Vue对象中保存的数据
+                    msg:"hello vue!"
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <!--<span>Hello</span>-->
+        <span>{{msg}}</span>
+        <input type="text" v-model:value="msg" />
+        <!-- v-model:value 中 :value可以省略，直接写成v-model -->
+        <!-- trim可以去除首尾空格 -->
+        <input type="text" v-model="msg" />
+        <input type="text" v-model.trim="msg" />
+
+    </div>
+
+</body>
+</html>

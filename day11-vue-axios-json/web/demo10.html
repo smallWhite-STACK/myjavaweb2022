@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>Axios：demo02关于json格式（客户端给服务器）</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript" src="script/axios.min.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function() {
+            var vue = new Vue({
+                "el": "#div0",
+                data: {
+                    "uname": "lina",
+                    "pwd": "ok",
+                },
+                methods: {
+                    axios02: function () {
+                        axios({
+                            method: "post",
+                            url: "axios02.do",
+                            // params: {
+                            //     uname: vue.uname,
+                            //     pwd: vue.pwd,
+                            // }
+                            data:{
+                                uname: vue.uname,
+                                pwd: vue.pwd,
+                            }
+                        }).then(function (response) {
+                            console.log(response);
+
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+                },
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="div0">
+    uname:<input type="text" v-model="uname"/><br/>
+    pwd:<input type="text" v-model="pwd"/><br/>
+    <input type="button" @click="axios02" value="发送json格式的参数值的异步请求"/>
+</div>
+</body>
+</html>

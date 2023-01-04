@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>尚硅谷会员注册页面</title>
+    <!--1.-->
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/static/css/register.css}" />
+    <style type="text/css">
+      .login_form {
+        height: 420px;
+        margin-top: 25px;
+      }
+    </style>
+    <script language="JavaScript" th:src="@{/static/script/regist.js}"></script>
+
+  </head>
+  <body>
+    <div id="login_header">
+      <a href="../index.html">
+        <!--2.-->
+        <img class="logo_img" alt="" th:src="@{static/img/logo.gif}" />
+      </a>
+    </div>
+
+    <div class="login_banner">
+      <div class="register_form">
+        <h1>注册尚硅谷会员</h1>
+        <!--3.form表单-->
+
+        <!--<form th:action="">-->
+        <form th:action="@{/user.do}" method="post" onsubmit="return preRegist() ;" >
+            <input type="hidden" name="operate" value="regist"/>
+          <div class="form-item">
+            <div>
+              <label>用户名称:</label>
+              <!--为通过dom获取各个input对象，我们为其设置id-->
+              <input id="unameTxt" type="text" name="uname" value="宝2023" onblur="ckUname(this.value)" placeholder="请输入用户名" />
+            </div>
+            <span id="unameSpan" class="errMess">用户名应为6~16位数组和字母组成</span>
+          </div>
+          <div class="form-item">
+            <div>
+              <label>用户密码:</label>
+              <input id="pwdTxt" type="password" name="pwd" value="123ok" placeholder="请输入密码" />
+            </div>
+            <span id="pwdSpan" class="errMess">密码的长度至少为8位</span>
+          </div>
+          <div class="form-item">
+            <div>
+              <label>确认密码:</label>
+              <input id="pwdTxt2" type="password" name="pwd" value="123ok" placeholder="请输入确认密码" />
+            </div>
+            <span id="pwdSpan2" class="errMess">密码两次输入不一致</span>
+          </div>
+          <div class="form-item">
+            <div>
+              <label>用户邮箱:</label>
+              <input id="emailTxt" type="text" name="email" value="xj@qq.com" placeholder="请输入邮箱" />
+            </div>
+            <span id="emailSpan" class="errMess">请输入正确的邮箱格式</span>
+          </div>
+          <div class="form-item">
+            <div>
+              <label>验证码:</label>
+              <div class="verify">
+                <!--3.3增加name属性，在java中可以使用-->
+                <input type="text" name="verifyCode" placeholder="" />
+                <!--3.2 配置web.xml-->
+
+                <img th:src="@{/kaptcha.jpg}" alt="" />
+              </div>
+            </div>
+            <span class="errMess">请输入正确的验证码</span>
+          </div>
+          <button class="btn">注册</button>
+        </form>
+      </div>
+    </div>
+    <div id="bottom">
+      <span>
+        尚硅谷书城.Copyright &copy;2015
+      </span>
+    </div>
+  </body>
+</html>

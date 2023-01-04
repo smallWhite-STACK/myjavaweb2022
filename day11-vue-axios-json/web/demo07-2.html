@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo07-2：侦听属性</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                "el":"#app",
+                data:{
+                    "leftVal":1,
+                    "rightVal":2,
+                    "sumVal":0
+                },
+                //我们需要监听leftVal和rightVal
+                watch:{
+                    "leftVal":function (newVal) {
+                        this.sumVal=parseInt(newVal)+parseInt(this.rightVal);
+                    },
+                    "rightVal":function (newVal) {
+                        this.sumVal=parseInt(newVal)+parseInt(this.leftVal);
+                    }
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-model:value="leftVal" size="2"/>+
+        <input type="text" v-model:value="rightVal" size="2"/>=
+        <span>{{sumVal}}</span>
+    </div>
+
+</body>
+</html>

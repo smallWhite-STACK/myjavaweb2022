@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>VUE入门demo01</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        //使用vue操作span标签的文本值
+        window.onload=function(){
+            var vue = new Vue({
+                "el":"#div0",  //el用于指定Vue对象要关联的HTML元素。el就是element的缩写
+                data:{          // data属性设置了Vue对象中保存的数据
+                    msg:"hello vue!",
+                    uname:"xj"
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <!--<span>Hello</span>-->
+        <span>{{msg}}</span>
+
+        <input type="text" v-bind:value="uname" />
+        <input type="text" :value="uname" />
+    </div>
+
+</body>
+</html>

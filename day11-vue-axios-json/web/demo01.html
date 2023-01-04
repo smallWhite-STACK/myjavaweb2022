@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>关于JS对象的创建方式</h1>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+
+    <script language="JavaScript">
+        function  hello() {
+        //     alert("Hello,用户！")
+            person2.sayHello();
+        }
+
+
+        //定义js对象方式1：
+        var person = {
+            "name":"jim",
+            "pid":"0",
+            "sayHello":function () {
+                alert("Hello,Jim！")
+            }
+        };
+        //定义js对象方式2：
+        var person2 = new Object();
+        person2.name="jim";
+        person2.id=0;
+        person2.sayHello=function(){
+            alert("Hello,Jerry！")
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id=""div0>
+        <span>Hello</span>
+        <input type="button" value="打招呼" onclick="hello()" />
+    </div>
+
+</body>
+</html>
